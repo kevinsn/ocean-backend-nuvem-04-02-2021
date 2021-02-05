@@ -1,7 +1,5 @@
 require('dotenv').config();
 
-console.log(process.env.DB_HOST);
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const { MongoClient, ObjectId } = require('mongodb');
