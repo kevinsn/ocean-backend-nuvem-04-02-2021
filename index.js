@@ -10,7 +10,6 @@ const { MongoClient, ObjectId } = require('mongodb');
   const dbHost = process.env.DB_HOST;
   const dbName = process.env.DB_NAME;
 
-  const dbName = 'ocean_db';	    
   const url = `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}?retryWrites=true&w=majority`;
 
   console.info('Conectando ao banco de dados...');
