@@ -3,17 +3,17 @@ const bodyParser = require('body-parser');
 const { MongoClient, ObjectId } = require('mongodb');
 
 (async () => {
-    const url = 'mongodb://localhost:27017';
+    const url = 'mongodb+srv://admin:96ihm3eOutHOC6Yh@cluster0.f4ybm.mongodb.net/ocean_db?retryWrites=true&w=majority';
 
-    const dbName = 'ocean_database_03_02_2021';
+    const dbName = 'ocean_db';
 
     console.info('Conectando ao banco de dados...');
 
-    // const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
 
     console.info('MongoDB conectado com sucesso!');
 
-    // const db = client.db(dbName);
+    const db = client.db(dbName);
 
     const app = express()
 
