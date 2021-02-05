@@ -1,25 +1,33 @@
+require('dotenv').config();
+
+console.log(process.env.DB_HOST);
+
 const express = require('express');
 const bodyParser = require('body-parser');
 const { MongoClient, ObjectId } = require('mongodb');
 
 (async () => {
-    const url = 'mongodb+srv://admin:96ihm3eOutHOC6Yh@cluster0.f4ybm.mongodb.net/ocean_db?retryWrites=true&w=majority';
+  const dbUser = process.env.DB_USER;
+  const dbPassword = process.env.DB_PASSWORD;
+  const dbHost = process.env.DB_HOST;
+  const dbName = process.env.DB_NAME;
 
-    const dbName = 'ocean_db';
+  const dbName = 'ocean_db';	    
+  const url = `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/${dbName}?retryWrites=true&w=majority`;
 
-    console.info('Conectando ao banco de dados...');
+  console.info('Conectando ao banco de dados...');
 
-    const client = await MongoClient.connect(url, { useUnifiedTopology: true });
+  const client = await MongoClient.connect(url, { useUnifiedTopology: true });
 
-    console.info('MongoDB conectado com sucesso!');
+  console.info('MongoDB conectado com sucesso!');
 
-    const db = client.db(dbName);
+  const db = client.db(dbName);
 
-    const app = express()
+  const app = express()
 
-    app.use(bodyParser.json());
+  app.use(bodyParser.json());
 
-    const port = process.env.PORT || 3000;
+  const port = process.env.PORT || 3000;
 
   /*
   Create, Read (All/Single), Update & Delete
@@ -27,7 +35,7 @@ const { MongoClient, ObjectId } = require('mongodb');
   */
 
   const mensagens = db.collection('mensagens');
-  
+
   app.get('/', (req, res) => {
     res.send('Hello World!');
   });
