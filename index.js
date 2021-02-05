@@ -26,9 +26,8 @@ const { MongoClient, ObjectId } = require('mongodb');
   Criar, Ler (Tudo ou Individual), Atualizar e Remover
   */
 
-  // const mensagens = db.collection('mensagens');
-  const mensagens = undefined;
-
+  const mensagens = db.collection('mensagens');
+  
   app.get('/', (req, res) => {
     res.send('Hello World!');
   });
